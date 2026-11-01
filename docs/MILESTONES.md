@@ -32,7 +32,7 @@ Deliverables:
 - A **probe session checklist** (`runbooks/probe-session.md`) listing exactly what to capture at work: login, main menu, one list/grid screen, one edit screen, one modal confirm, one error popup; for each, snapshot + `try-*` results for every control class present.
 - Captures committed under `registry/autoline/<screen>/observed.<version>.json` with a `probe-findings.md` answering the open questions in SPEC §16 (1–7).
 
-Exit: every open question in SPEC §16 items 1–7 has a recorded answer backed by a capture file. Findings written as an ADR (`0006-kcml-control-behaviour.md`) that fixes the default strategies in §7 and the grid strategy in §8.
+Exit: every open question in SPEC §16 items 1–7 has a recorded answer backed by a capture file. Findings written as an ADR (`0007-kcml-control-behaviour.md`) that fixes the default strategies in §7 and the grid strategy in §8.
 
 ---
 

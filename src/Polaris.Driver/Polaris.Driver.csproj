@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Polaris.Native\Polaris.Native.csproj" />
+  </ItemGroup>
+</Project>

@@ -8,13 +8,15 @@ Principle: **if a rule can be checked by a tool, it is checked by a tool and not
 |---|---|
 | Formatting | `dotnet format` on every edit (hook) and in CI |
 | Layer dependencies point downward only (`Autoline → Driver → Native`); nothing outside `Native` references `Windows.Win32.*` | Architecture tests (`Polaris.Driver.Tests/Architecture/`) |
-| No `Thread.Sleep`, `Task.Delay` outside `WaitUntil`, raw `SendMessage` to foreign HWNDs, `DllImport` outside `Native` | `BannedSymbols.txt` + BannedApiAnalyzers |
+| No `Thread.Sleep`, `Task.Delay` outside `WaitUntil`, raw `SendMessage` to foreign HWNDs | `BannedSymbols.txt` + BannedApiAnalyzers |
+| No `DllImport` / `LibraryImport` outside `Native` | `BannedSymbols.OutsideNative.txt` (not applied to `Native`, which hosts CsWin32 output) |
+| `unsafe` only in `Native` | `Directory.Build.targets` fails the build |
 | Nullable enabled, warnings as errors, NetAnalyzers + StyleCop | `Directory.Build.props` |
 | Public API changes are explicit | PublicApiAnalyzers (`PublicAPI.Shipped.txt` / `Unshipped.txt`) |
 | `.cs` files ≤ 300 lines | `scripts/check-file-sizes.ps1` in CI and the Stop hook |
 | `Generated/` is never hand-edited | Pre-edit hook blocks it; CI regenerates and fails on diff; checksum header |
 | Curated registry entries validate (schema, cross-refs, unique resolution) | `polaris-registry validate` in build |
-| Test names describe a scenario | Analyzer rule: test method names must contain `_` (`Subject_Action_Outcome`) |
+| Test names describe a scenario | Architecture test: test method names must contain `_` (`Subject_Action_Outcome`) |
 | Every ADR has status, context, decision, consequences | `scripts/check-adrs.ps1` |
 
 ## Judgement rules — short, because the list above does the heavy lifting

@@ -1,0 +1,5 @@
+# Match .editorconfig (end_of_line = crlf) so `dotnet format --verify-no-changes` agrees on every checkout.
+* text=auto eol=crlf
+*.png binary
+*.jpg binary
+*.ico binary

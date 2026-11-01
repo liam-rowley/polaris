@@ -1,0 +1,3 @@
+# Banned in every project except Polaris.Native, which hosts CsWin32's generated P/Invoke (SPEC §5.1).
+T:System.Runtime.InteropServices.DllImportAttribute;P/Invoke lives in Polaris.Native via CsWin32 only
+T:System.Runtime.InteropServices.LibraryImportAttribute;P/Invoke lives in Polaris.Native via CsWin32 only

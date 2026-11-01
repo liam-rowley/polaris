@@ -353,7 +353,7 @@ Principle: **anything a machine can check, a machine checks.** Prose rules exist
 5. Are Autoline screens top-level windows, owned popups, or MDI children? How are titles formatted?
 6. What does MSAA expose (role/name/value) per control class?
 7. Does Autoline stop pumping messages during long operations (affects `SendMessageTimeout` tuning)?
-8. Does the GitHub-hosted Windows runner (or self-hosted) provide an interactive desktop sufficient for `SendInput` tests? (M0.)
+8. ~~Does the GitHub-hosted Windows runner (or self-hosted) provide an interactive desktop sufficient for `SendInput` tests?~~ **Answered in M0: yes, `windows-latest` works** (`docs/m0-report.md`).
 
 ## 17. Success criteria for v1
 
