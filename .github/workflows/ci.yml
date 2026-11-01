@@ -1,0 +1,51 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    env:
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore Polaris.sln
+
+      - name: Format
+        run: dotnet format Polaris.sln --verify-no-changes --no-restore
+
+      - name: Build
+        run: dotnet build Polaris.sln --no-restore -c Release
+
+      - name: Test (fast)
+        run: dotnet test Polaris.sln --no-build -c Release --filter "Category!=Integration"
+
+      # Needs an interactive desktop (SPEC §16 Q8). See docs/m0-report.md for what the hosted runner provides.
+      - name: Test (integration)
+        run: dotnet test Polaris.sln --no-build -c Release --filter "Category=Integration"
+
+      - name: File sizes
+        shell: powershell
+        run: ./scripts/check-file-sizes.ps1
+
+      - name: ADRs
+        shell: powershell
+        run: ./scripts/check-adrs.ps1

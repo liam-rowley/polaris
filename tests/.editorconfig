@@ -5,3 +5,4 @@ dotnet_diagnostic.CA1515.severity = none   # xUnit requires public test classes
 dotnet_diagnostic.CS1591.severity = none   # test names are the documentation
 dotnet_diagnostic.SA1600.severity = none   # test names are the documentation
 dotnet_diagnostic.CA2007.severity = none   # no SynchronizationContext in tests; ConfigureAwait is noise
+dotnet_diagnostic.CA1303.severity = none   # test fixtures (window titles, captions) are never localised

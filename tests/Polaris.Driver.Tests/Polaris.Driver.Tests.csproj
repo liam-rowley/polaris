@@ -3,6 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <IsPackable>false</IsPackable>
+    <!-- WinForms only for the throwaway interactive-desktop probe (Integration/). -->
+    <UseWindowsForms>true</UseWindowsForms>
     <!-- Run under VSTest so the hooks and CI can filter on Category!=Integration (ADR-0006). -->
     <IsTestingPlatformApplication>false</IsTestingPlatformApplication>
   </PropertyGroup>
