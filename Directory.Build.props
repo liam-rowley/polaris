@@ -1,0 +1,40 @@
+<Project>
+  <!--
+    Shared build settings. These are the mechanised rules in docs/CONVENTIONS.md;
+    loosen them only with an ADR. Package versions live in Directory.Packages.props.
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AnalysisLevel>latest-all</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <!-- Required by StyleCop doc rules and by IDE0005 (unused usings) in build. -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <!-- unsafe is confined to Polaris.Native (SPEC §5.1). Directory.Build.targets fails the build otherwise. -->
+  <PropertyGroup>
+    <AllowUnsafeBlocks Condition="'$(MSBuildProjectName)' == 'Polaris.Native'">true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)BannedSymbols.txt" />
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" />
+  </ItemGroup>
+
+  <!-- Public API baseline for packaged libraries (SPEC §14, §15). -->
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Polaris.Native' Or '$(MSBuildProjectName)' == 'Polaris.Driver' Or '$(MSBuildProjectName)' == 'Polaris.Registry' Or '$(MSBuildProjectName)' == 'Polaris.Autoline'">
+    <PolarisTracksPublicApi>true</PolarisTracksPublicApi>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(PolarisTracksPublicApi)' == 'true'">
+    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" PrivateAssets="all" />
+    <AdditionalFiles Include="PublicAPI.Shipped.txt" />
+    <AdditionalFiles Include="PublicAPI.Unshipped.txt" />
+  </ItemGroup>
+</Project>

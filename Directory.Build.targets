@@ -1,0 +1,9 @@
+<Project>
+  <Target Name="PolarisGuardUnsafe" BeforeTargets="CoreCompile" Condition="'$(AllowUnsafeBlocks)' == 'true' And '$(MSBuildProjectName)' != 'Polaris.Native'">
+    <Error Text="$(MSBuildProjectName) enables AllowUnsafeBlocks. unsafe code belongs only in Polaris.Native (SPEC §5.1, ADR-0001)." />
+  </Target>
+
+  <Target Name="PolarisGuardPublicApiFiles" BeforeTargets="CoreCompile" Condition="'$(PolarisTracksPublicApi)' == 'true' And (!Exists('PublicAPI.Shipped.txt') Or !Exists('PublicAPI.Unshipped.txt'))">
+    <Error Text="$(MSBuildProjectName) tracks its public API but PublicAPI.Shipped.txt / PublicAPI.Unshipped.txt are missing. Create both containing '#nullable enable'." />
+  </Target>
+</Project>

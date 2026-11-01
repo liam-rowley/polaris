@@ -1,0 +1,7 @@
+# Test projects only. Each relaxation says why; production code keeps the root rules.
+[*.cs]
+dotnet_diagnostic.CA1707.severity = none   # test names are scenarios with underscores (CONVENTIONS: Subject_Action_Outcome)
+dotnet_diagnostic.CA1515.severity = none   # xUnit requires public test classes
+dotnet_diagnostic.CS1591.severity = none   # test names are the documentation
+dotnet_diagnostic.SA1600.severity = none   # test names are the documentation
+dotnet_diagnostic.CA2007.severity = none   # no SynchronizationContext in tests; ConfigureAwait is noise
