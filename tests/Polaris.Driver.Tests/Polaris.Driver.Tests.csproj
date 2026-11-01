@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <!-- Run under VSTest so the hooks and CI can filter on Category!=Integration (ADR-0006). -->
+    <IsTestingPlatformApplication>false</IsTestingPlatformApplication>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Polaris.Native\Polaris.Native.csproj" />
+    <ProjectReference Include="..\..\src\Polaris.Driver\Polaris.Driver.csproj" />
+    <ProjectReference Include="..\..\src\Polaris.Registry\Polaris.Registry.csproj" />
+    <ProjectReference Include="..\..\src\Polaris.Probe\Polaris.Probe.csproj" />
+    <ProjectReference Include="..\..\src\Polaris.FakeDms\Polaris.FakeDms.csproj" />
+  </ItemGroup>
+
+</Project>
