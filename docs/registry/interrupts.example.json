@@ -1,0 +1,11 @@
+{
+  "interrupts": [
+    { "id": "session-expired", "window": { "titleMatches": "^Session Expired" },
+      "policy": "fail", "reason": "Hal must restart the session" },
+    { "id": "record-locked", "window": { "titleMatches": "^Record in use" },
+      "policy": "dismiss", "dismiss": { "control": { "caption": "OK" }, "action": "Click" },
+      "thenThrow": "RecordLockedException" },
+    { "id": "print-dialog", "window": { "className": "#32770", "titleMatches": "^Print" },
+      "policy": "dismiss", "dismiss": { "control": { "caption": "Cancel" }, "action": "Click" } }
+  ]
+}

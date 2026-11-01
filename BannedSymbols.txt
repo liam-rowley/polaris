@@ -1,0 +1,8 @@
+# Microsoft.CodeAnalysis.BannedApiAnalyzers format: T:Type / M:Method ; reason
+M:System.Threading.Thread.Sleep(System.Int32);Use WaitUntil with a condition (CONVENTIONS.md)
+M:System.Threading.Thread.Sleep(System.TimeSpan);Use WaitUntil with a condition (CONVENTIONS.md)
+M:System.Threading.Tasks.Task.Delay(System.Int32);Use WaitUntil with a condition (CONVENTIONS.md)
+M:System.Threading.Tasks.Task.Delay(System.TimeSpan);Use WaitUntil with a condition (CONVENTIONS.md)
+T:System.Runtime.InteropServices.DllImportAttribute;P/Invoke lives in Polaris.Native via CsWin32 only
+# Add after M0 once CsWin32 names are known, e.g.:
+# M:Windows.Win32.PInvoke.SendMessage(...);Use Native.Messaging.Send (SendMessageTimeout)

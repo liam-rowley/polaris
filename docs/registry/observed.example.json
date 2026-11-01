@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-11-03T14:12:00Z",
+  "capturedBy": "polaris-probe 0.1.0",
+  "autolineVersion": "EXAMPLE",
+  "window": {
+    "title": "Vehicle Stock - Edit [ABC123]",
+    "className": "KCMLFrame32",
+    "processName": "autoline.exe",
+    "rect": { "left": 100, "top": 80, "width": 1200, "height": 800 },
+    "style": 349110272, "exStyle": 256
+  },
+  "controls": [
+    { "index": 0, "parentIndex": -1, "className": "KCMLStatic32", "caption": "Stock No", "controlId": 0,
+      "rect": { "left": 20, "top": 40, "width": 80, "height": 18 }, "visible": true, "enabled": true,
+      "style": 1342177280, "exStyle": 0, "msaa": { "role": "ROLE_SYSTEM_STATICTEXT", "name": "Stock No", "value": null } },
+    { "index": 1, "parentIndex": -1, "className": "KCMLEdit32", "caption": "", "controlId": 0,
+      "rect": { "left": 110, "top": 38, "width": 160, "height": 22 }, "visible": true, "enabled": true,
+      "style": 1342177408, "exStyle": 512, "msaa": { "role": "ROLE_SYSTEM_TEXT", "name": "Stock No", "value": "ABC123" } },
+    { "index": 2, "parentIndex": -1, "className": "KCMLStatic32", "caption": "Reg No", "controlId": 0,
+      "rect": { "left": 20, "top": 70, "width": 80, "height": 18 }, "visible": true, "enabled": true,
+      "style": 1342177280, "exStyle": 0, "msaa": { "role": "ROLE_SYSTEM_STATICTEXT", "name": "Reg No", "value": null } },
+    { "index": 3, "parentIndex": -1, "className": "KCMLEdit32", "caption": "", "controlId": 0,
+      "rect": { "left": 110, "top": 68, "width": 160, "height": 22 }, "visible": true, "enabled": true,
+      "style": 1342177408, "exStyle": 512, "msaa": { "role": "ROLE_SYSTEM_TEXT", "name": "Reg No", "value": "" } },
+    { "index": 4, "parentIndex": -1, "className": "KCMLButton32", "caption": "Save", "controlId": 0,
+      "rect": { "left": 1000, "top": 740, "width": 80, "height": 26 }, "visible": true, "enabled": true,
+      "style": 1342177280, "exStyle": 0, "msaa": { "role": "ROLE_SYSTEM_PUSHBUTTON", "name": "Save", "value": null } },
+    { "index": 5, "parentIndex": -1, "className": "KCMLGrid32", "caption": "", "controlId": 0,
+      "rect": { "left": 20, "top": 300, "width": 1160, "height": 400 }, "visible": true, "enabled": true,
+      "style": 1342177280, "exStyle": 512, "msaa": { "role": "ROLE_SYSTEM_TABLE", "name": null, "value": null } }
+  ]
+}

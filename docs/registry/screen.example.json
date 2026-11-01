@@ -1,0 +1,47 @@
+{
+  "id": "vehicle-stock.edit",
+  "description": "Edit a single vehicle stock record. Example only — names and layout are placeholders until a real probe capture exists.",
+  "identify": {
+    "window": { "titleMatches": "^Vehicle Stock - Edit" },
+    "anchors": [ { "caption": "Stock No" }, { "caption": "Save" } ]
+  },
+  "controls": {
+    "StockNumber": { "type": "Edit",   "locator": { "labelledBy": "Stock No" }, "write": "setText" },
+    "RegNumber":   { "type": "Edit",   "locator": { "labelledBy": "Reg No" },   "write": "postChars" },
+    "Make":        { "type": "Edit",   "locator": { "labelledBy": "Make" },  "readOnly": true },
+    "Model":       { "type": "Edit",   "locator": { "labelledBy": "Model" }, "readOnly": true },
+    "Vin":         { "type": "Edit",   "locator": { "labelledBy": "VIN" },   "readOnly": true },
+    "Save":        { "type": "Button", "locator": { "caption": "Save" } },
+    "Cancel":      { "type": "Button", "locator": { "caption": "Cancel" } },
+    "Lines":       { "type": "Grid",   "locator": { "className": "KCMLGrid32", "nth": 0 },
+                     "columns": [ "Line", "Description", "Qty", "Price" ] }
+  },
+  "actions": {
+    "EnterRegNumber": {
+      "do": { "control": "RegNumber", "action": "SetValue" },
+      "effects": [
+        { "control": "Make",  "becomes": "nonEmpty" },
+        { "control": "Model", "becomes": "nonEmpty" },
+        { "control": "Vin",   "becomes": "nonEmpty" }
+      ],
+      "timeoutMs": 5000
+    },
+    "Save": {
+      "do": { "control": "Save", "action": "Click" },
+      "outcomes": [
+        { "name": "Saved",        "screen": "vehicle-stock.list" },
+        { "name": "ConfirmShown", "screen": "common.confirm" },
+        { "name": "Validation",   "window": { "titleMatches": "^Error" }, "isFailure": true }
+      ],
+      "timeoutMs": 10000
+    },
+    "Cancel": {
+      "do": { "control": "Cancel", "action": "Click" },
+      "outcomes": [ { "name": "Closed", "screen": "vehicle-stock.list" } ]
+    }
+  },
+  "navigation": {
+    "from": [ { "screen": "vehicle-stock.list", "via": "OpenSelected" } ],
+    "hotKeys": { "Save": "F10", "Cancel": "Escape" }
+  }
+}
