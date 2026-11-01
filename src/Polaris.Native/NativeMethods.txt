@@ -1,0 +1,13 @@
+FindWindowEx
+EnumChildWindows
+EnumWindows
+GetClassName
+GetWindowText
+GetWindowTextLength
+GetWindowRect
+SendMessageTimeout
+PostMessage
+IsWindowVisible
+IsWindowEnabled
+GetDlgCtrlID
+GetWindowThreadProcessId

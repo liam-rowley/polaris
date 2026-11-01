@@ -1,9 +1,7 @@
-# Microsoft.CodeAnalysis.BannedApiAnalyzers format: T:Type / M:Method ; reason
+# Banned in every project. Microsoft.CodeAnalysis.BannedApiAnalyzers format: T:Type / M:Method ; reason
 M:System.Threading.Thread.Sleep(System.Int32);Use WaitUntil with a condition (CONVENTIONS.md)
 M:System.Threading.Thread.Sleep(System.TimeSpan);Use WaitUntil with a condition (CONVENTIONS.md)
 M:System.Threading.Tasks.Task.Delay(System.Int32);Use WaitUntil with a condition (CONVENTIONS.md)
 M:System.Threading.Tasks.Task.Delay(System.TimeSpan);Use WaitUntil with a condition (CONVENTIONS.md)
-T:System.Runtime.InteropServices.DllImportAttribute;P/Invoke lives in Polaris.Native via CsWin32 only
-T:System.Runtime.InteropServices.LibraryImportAttribute;P/Invoke lives in Polaris.Native via CsWin32 only
-# Add after M0 once CsWin32 names are known, e.g.:
-# M:Windows.Win32.PInvoke.SendMessage(...);Use Native.Messaging.Send (SendMessageTimeout)
+# Raw SendMessage blocks forever if the target hangs. Not in NativeMethods.txt; banned in case someone adds it.
+M:Windows.Win32.PInvoke.SendMessage(Windows.Win32.Foundation.HWND,System.UInt32,Windows.Win32.Foundation.WPARAM,Windows.Win32.Foundation.LPARAM);Use SendMessageTimeout (ADR-0002); a hung Autoline must not hang the bot

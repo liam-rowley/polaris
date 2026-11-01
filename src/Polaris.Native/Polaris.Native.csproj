@@ -1,3 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <!-- All P/Invoke is generated from NativeMethods.txt (SPEC §5.1). Adding an API needs an ADR (CONVENTIONS rule 8). -->
+    <PackageReference Include="Microsoft.Windows.CsWin32" PrivateAssets="all" />
+  </ItemGroup>
+
 </Project>

@@ -1,1 +1,15 @@
 #nullable enable
+Polaris.Native.TopLevelWindows
+Polaris.Native.WindowHandle
+Polaris.Native.WindowHandle.Deconstruct(out nint Value) -> void
+Polaris.Native.WindowHandle.Equals(Polaris.Native.WindowHandle other) -> bool
+Polaris.Native.WindowHandle.Value.get -> nint
+Polaris.Native.WindowHandle.Value.init -> void
+Polaris.Native.WindowHandle.WindowHandle() -> void
+Polaris.Native.WindowHandle.WindowHandle(nint Value) -> void
+override Polaris.Native.WindowHandle.GetHashCode() -> int
+static Polaris.Native.TopLevelWindows.Enumerate() -> System.Collections.Generic.IReadOnlyList<Polaris.Native.WindowHandle>!
+static Polaris.Native.WindowHandle.operator !=(Polaris.Native.WindowHandle left, Polaris.Native.WindowHandle right) -> bool
+static Polaris.Native.WindowHandle.operator ==(Polaris.Native.WindowHandle left, Polaris.Native.WindowHandle right) -> bool
+~override Polaris.Native.WindowHandle.Equals(object obj) -> bool
+~override Polaris.Native.WindowHandle.ToString() -> string
